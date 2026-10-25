@@ -29,3 +29,50 @@ body {
   letter-spacing: 0.18px;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Título de seção: uma única classe para todos os títulos */
+.section-title {
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--text-strong);
+  margin: 0 0 2rem;
+}
+
+/* Botão */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  background: var(--accent);
+  color: #ffffff;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: var(--text);
+}
