@@ -2,7 +2,7 @@
 
 Portfólio pessoal desenvolvido na disciplina de Web Development (CP3). O site lista projetos buscados automaticamente da API do GitHub, tem um formulário de contato que envia e-mail e salva as mensagens, e um dashboard protegido por login para consultá-las e escolher os projetos em destaque.
 
-**Site publicado:** (preencher após o deploy na Vercel)
+**Site publicado:** https://portfolio-nibarbosa.vercel.app
 
 **Acesso rápido:** o site publicado já está configurado na Vercel, então não é preciso criar conta para navegá-lo ou testar o formulário de contato. O dashboard é restrito ao dono do site. Para verificar o bloqueio, acesse `/dashboard` sem estar logado: você será redirecionado para a tela de login.
 
