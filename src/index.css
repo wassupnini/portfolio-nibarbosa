@@ -183,3 +183,90 @@ body {
     order: -1;
   }
 }
+
+/* Grade de projetos */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Altura mínima fixa evita saltos de layout entre skeleton e card */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 220px;
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-strong);
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  font-size: 0.875rem;
+}
+
+.project-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.state-msg {
+  text-align: center;
+  color: var(--text);
+}
+
+/* Skeleton de carregamento */
+.skeleton {
+  border-radius: 0.5rem;
+  background: var(--border);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-title {
+  height: 1.5rem;
+  width: 60%;
+}
+
+.skeleton-line {
+  height: 0.9rem;
+  width: 100%;
+}
+
+.skeleton-line.short {
+  width: 40%;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
