@@ -13,7 +13,7 @@ export async function sendContactMessage({ name, email, message }) {
     throw new Error('Não foi possível salvar a mensagem.')
   }
 
-  // 2. Envia o e-mail para você
+  // 2. Envia o e-mail para mim
   if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
     throw new Error('Configuração de e-mail ausente. Verifique o arquivo .env.')
   }
