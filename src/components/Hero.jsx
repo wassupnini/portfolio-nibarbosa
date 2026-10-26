@@ -1,4 +1,4 @@
-import kuromi from '../assets/kuromi.png'
+import kuromi from '../assets/kuromi.webp'
 
 export default function Hero() {
   return (
@@ -19,9 +19,10 @@ export default function Hero() {
         <img
           className="hero-image"
           src={kuromi}
-          alt="Mascote Kuromi"
+          alt="Kuromi Sanrio"
           width="360"
           height="360"
+          fetchpriority="high"
         />
       </div>
     </section>
