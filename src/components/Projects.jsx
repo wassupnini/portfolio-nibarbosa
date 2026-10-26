@@ -51,7 +51,9 @@ export default function Projects() {
         </div>
       )}
 
-      {!loading && error && <p className="state-msg">Não foi possível carregar os projetos. {error}</p>}
+      {!loading && error && (
+        <p className="state-msg">Não foi possível carregar os projetos. {error}</p>
+      )}
 
       {!loading && !error && visible.length === 0 && (
         <p className="state-msg">Nenhum projeto em destaque.</p>

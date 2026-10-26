@@ -23,7 +23,11 @@ export default function ProjectDetail() {
     return (
       <main className="page">
         <p className="state-msg">Não foi possível carregar o projeto. {error}</p>
-        <p className="state-msg"><Link to="/" className="project-link">Voltar para a home</Link></p>
+        <p className="state-msg">
+          <Link to="/" className="project-link">
+            Voltar para a home
+          </Link>
+        </p>
       </main>
     )
   }
@@ -34,7 +38,11 @@ export default function ProjectDetail() {
     return (
       <main className="page">
         <p className="state-msg">Projeto não encontrado.</p>
-        <p className="state-msg"><Link to="/" className="project-link">Voltar para a home</Link></p>
+        <p className="state-msg">
+          <Link to="/" className="project-link">
+            Voltar para a home
+          </Link>
+        </p>
       </main>
     )
   }
@@ -46,14 +54,20 @@ export default function ProjectDetail() {
         <span className="tag">Projeto em grupo</span>
         <p>{repo.description || 'Sem descrição.'}</p>
         {repo.language && <span className="tag">{repo.language}</span>}
-        <p><strong>Minha parte:</strong> escreva aqui sua contribuição.</p>
+        <p>
+          <strong>Minha parte:</strong> escreva aqui sua contribuição.
+        </p>
         <div>
           <a href={repo.url} target="_blank" rel="noreferrer">
             <Button>Ver no GitHub</Button>
           </a>
         </div>
       </Card>
-      <p className="state-msg"><Link to="/" className="project-link">← Voltar para a home</Link></p>
+      <p className="state-msg">
+        <Link to="/" className="project-link">
+          ← Voltar para a home
+        </Link>
+      </p>
     </main>
   )
 }

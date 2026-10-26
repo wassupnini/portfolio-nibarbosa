@@ -7,9 +7,7 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 export async function sendContactMessage({ name, email, message }) {
   // 1. Salva no banco primeiro: se o e-mail falhar, a mensagem não se perde
-  const { error: dbError } = await supabase
-    .from('messages')
-    .insert({ name, email, message })
+  const { error: dbError } = await supabase.from('messages').insert({ name, email, message })
 
   if (dbError) {
     throw new Error('Não foi possível salvar a mensagem.')

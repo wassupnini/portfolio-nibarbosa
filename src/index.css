@@ -56,7 +56,9 @@ body {
   cursor: pointer;
   background: var(--accent);
   color: #ffffff;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 
 .btn:hover:not(:disabled) {
@@ -267,8 +269,13 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .stack > * + * {
@@ -344,5 +351,7 @@ textarea.input {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }

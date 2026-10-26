@@ -7,6 +7,17 @@ import Button from '../components/Button.jsx'
 import Card from '../components/Card.jsx'
 import SectionTitle from '../components/SectionTitle.jsx'
 
+async function fetchDashboardData() {
+  const [m, f] = await Promise.all([
+    supabase.from('messages').select('*').order('created_at', { ascending: false }),
+    supabase.from('featured_projects').select('slug').order('position'),
+  ])
+  if (m.error || f.error) {
+    return { error: 'Não foi possível carregar os dados.' }
+  }
+  return { messages: m.data, featured: f.data.map((row) => row.slug) }
+}
+
 export default function Dashboard() {
   const navigate = useNavigate()
   const { repos, loading: reposLoading, error: reposError } = useGithubRepos()
@@ -15,23 +26,22 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  async function loadData() {
-    setError(null)
-    const [m, f] = await Promise.all([
-      supabase.from('messages').select('*').order('created_at', { ascending: false }),
-      supabase.from('featured_projects').select('slug').order('position'),
-    ])
-    if (m.error || f.error) {
-      setError('Não foi possível carregar os dados.')
-    } else {
-      setMessages(m.data)
-      setFeatured(f.data.map((row) => row.slug))
-    }
-    setLoading(false)
-  }
-
   useEffect(() => {
-    loadData()
+    let active = true
+    fetchDashboardData().then((result) => {
+      if (!active) return
+      if (result.error) {
+        setError(result.error)
+      } else {
+        setError(null)
+        setMessages(result.messages)
+        setFeatured(result.featured)
+      }
+      setLoading(false)
+    })
+    return () => {
+      active = false
+    }
   }, [])
 
   async function toggleAnswered(msg) {
@@ -40,20 +50,18 @@ export default function Dashboard() {
       .update({ answered: !msg.answered })
       .eq('id', msg.id)
     if (error) return setError('Não foi possível atualizar a mensagem.')
-    setMessages((prev) =>
-      prev.map((m) => (m.id === msg.id ? { ...m, answered: !m.answered } : m)),
-    )
+    setMessages((prev) => prev.map((m) => (m.id === msg.id ? { ...m, answered: !m.answered } : m)))
   }
 
   async function toggleFeatured(slug) {
     if (featured.includes(slug)) {
       await supabase.from('featured_projects').delete().eq('slug', slug)
     } else {
-      await supabase
-        .from('featured_projects')
-        .insert({ slug, position: featured.length })
+      await supabase.from('featured_projects').insert({ slug, position: featured.length })
     }
-    loadData()
+    const result = await fetchDashboardData()
+    if (result.error) setError(result.error)
+    else setFeatured(result.featured)
   }
 
   async function handleLogout() {

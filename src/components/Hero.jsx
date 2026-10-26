@@ -10,8 +10,8 @@ export default function Hero() {
         </h1>
         <p className="hero-subtitle">Estudante de Engenharia de Software.</p>
         <p>
-          Desenvolvendo aplicações onde a precisão da engenharia se encontra com o cuidado
-          estético do design.
+          Desenvolvendo aplicações onde a precisão da engenharia se encontra com o cuidado estético
+          do design.
         </p>
       </div>
 

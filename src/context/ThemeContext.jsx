@@ -1,6 +1,5 @@
-import { createContext, useEffect, useState } from 'react'
-
-export const ThemeContext = createContext(null)
+import { useEffect, useState } from 'react'
+import { ThemeContext } from './themeContext.js'
 
 const STORAGE_KEY = 'theme'
 
@@ -28,9 +27,5 @@ export function ThemeProvider({ children }) {
 
   const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
 }
