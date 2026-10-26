@@ -91,14 +91,17 @@ body {
   margin-top: 1rem;
 }
 
-/* Navbar */
+/* Navbar em formato de pílula, estilo da barra de pesquisa do YouTube */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1100px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
 .logo {
@@ -152,7 +155,7 @@ body {
   color: var(--text-strong);
 }
 
-/* Área com proporção fixa evita saltos de layout ao carregar a imagem */
+/* Área com proporção fixa para evitar saltos de layout ao carregar a imagem */
 .hero-image-wrap {
   width: 100%;
   max-width: 360px;
@@ -193,7 +196,7 @@ body {
   gap: 1.5rem;
 }
 
-/* Altura mínima fixa evita saltos de layout entre skeleton e card */
+/* Altura mínima fixa para evitar saltos de layout entre skeleton e card */
 .project-card {
   display: flex;
   flex-direction: column;
@@ -354,4 +357,91 @@ textarea.input {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Gradiente roxo no logo e no nome */
+.logo,
+.hero-name {
+  background: linear-gradient(90deg, #7e22ce, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Sombra roxa na Kuromi */
+.hero-image {
+  filter: drop-shadow(0 0 24px rgba(147, 51, 234, 0.6));
+}
+
+/* Divider: linha que separa as seções */
+.divider {
+  width: 100%;
+  max-width: 1100px;
+  height: 1px;
+  margin: 2.5rem auto;
+  border: none;
+  background: var(--border);
+}
+
+/* Chips de skills */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skill-chip {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-strong);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Hover nos cards de projeto: título branco normal, roxo ao passar o mouse */
+.project-card h3 {
+  color: var(--text-strong);
+  transition:
+    color 0.3s,
+    text-shadow 0.3s;
+}
+
+.project-card {
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.35);
+  transform: translateY(-4px);
+}
+
+.project-card:hover h3 {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(147, 51, 234, 0.6);
+}
+
+/* Hover nos chips de skills: só o brilho, sem movimento */
+.skill-chip {
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.skill-chip:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.35);
+}
+
+/* Espaço entre as seções do dashboard */
+.dashboard-section {
+  margin-top: 3rem;
 }

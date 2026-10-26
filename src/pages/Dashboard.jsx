@@ -81,38 +81,42 @@ export default function Dashboard() {
 
       {!loading && (
         <>
-          <h2 className="section-title">Mensagens</h2>
-          {messages.length === 0 && <p className="state-msg">Nenhuma mensagem recebida.</p>}
-          <div className="stack">
-            {messages.map((msg) => (
-              <Card key={msg.id} className="stack">
-                <div className="project-card-header">
-                  <strong>{msg.name}</strong>
-                  <span className="tag">{msg.answered ? 'Respondida' : 'Pendente'}</span>
-                </div>
-                <p>{msg.email}</p>
-                <p>{msg.message}</p>
-                <div>
-                  <Button onClick={() => toggleAnswered(msg)}>
-                    {msg.answered ? 'Marcar como pendente' : 'Marcar como respondida'}
-                  </Button>
-                </div>
-              </Card>
-            ))}
+          <div className="dashboard-section">
+            <SectionTitle>Mensagens</SectionTitle>
+            {messages.length === 0 && <p className="state-msg">Nenhuma mensagem recebida.</p>}
+            <div className="stack">
+              {messages.map((msg) => (
+                <Card key={msg.id} className="stack">
+                  <div className="project-card-header">
+                    <strong>{msg.name}</strong>
+                    <span className="tag">{msg.answered ? 'Respondida' : 'Pendente'}</span>
+                  </div>
+                  <p>{msg.email}</p>
+                  <p>{msg.message}</p>
+                  <div>
+                    <Button onClick={() => toggleAnswered(msg)}>
+                      {msg.answered ? 'Marcar como pendente' : 'Marcar como respondida'}
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
 
-          <h2 className="section-title">Projetos em destaque</h2>
-          {reposLoading && <p className="state-msg">Carregando projetos...</p>}
-          {reposError && <p className="state-msg">{reposError}</p>}
-          <div className="stack">
-            {repos.map((repo) => (
-              <Card key={repo.id} className="project-card-header">
-                <span>{repo.name}</span>
-                <Button onClick={() => toggleFeatured(repo.slug)}>
-                  {featured.includes(repo.slug) ? 'Remover destaque' : 'Destacar'}
-                </Button>
-              </Card>
-            ))}
+          <div className="dashboard-section">
+            <SectionTitle>Projetos em destaque</SectionTitle>
+            {reposLoading && <p className="state-msg">Carregando projetos...</p>}
+            {reposError && <p className="state-msg">{reposError}</p>}
+            <div className="stack">
+              {repos.map((repo) => (
+                <Card key={repo.id} className="project-card-header">
+                  <span>{repo.name}</span>
+                  <Button onClick={() => toggleFeatured(repo.slug)}>
+                    {featured.includes(repo.slug) ? 'Remover destaque' : 'Destacar'}
+                  </Button>
+                </Card>
+              ))}
+            </div>
           </div>
         </>
       )}

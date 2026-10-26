@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
@@ -18,6 +18,7 @@ function App() {
       <Suspense fallback={<p className="state-msg">Carregando...</p>}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/projetos/:slug" element={<ProjectDetail />} />
           <Route path="/login" element={<Login />} />
           <Route
